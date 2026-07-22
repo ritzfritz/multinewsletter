@@ -1,8 +1,8 @@
 <fieldset>
 	<legend>MultiNewsletter Changelog</legend>
-	<p>3.8.3-DEV</p>
+	<p>3.8.3</p>
 	<ul>
-		<li>...</li>
+		<li>Bugfix: Beim manuellen Newsletter-Versand wurde faelschlicherweise der Hinweis angezeigt, dass ein Versand im Hintergrund laeuft. Ursache war, dass die Abfrage der Autosend-Archive (<code>NewsletterManager::getArchivesToSend(false, true)</code>) auch manuelle Sendeliste-Eintraege (<code>autosend = 0</code>) zurueckgab. Die Abfrage liefert in diesem Modus jetzt ausschliesslich Autosend-Archive (<code>autosend = 1</code>, inkl. zukuenftig geplanter).</li>
 	</ul>
 	<p>3.8.2</p>
 	<ul>

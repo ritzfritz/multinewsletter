@@ -211,8 +211,8 @@ class NewsletterManager
 
     /**
      * Get newsletter archives which are on send list.
-     * @param bool $manual_send_only if true, autosend archives are excluded
-     * @param bool $includeFutureAutosend if true, autosend archives with future send_startdate are included
+     * @param bool $manual_send_only if true, only manual archives are returned (autosend excluded)
+     * @param bool $includeFutureAutosend if true, only autosend (background) archives are returned, including those scheduled for the future
      * @return array<int,Newsletter> Array with Newsletter archives
      */
     public static function getArchivesToSend(bool $manual_send_only = true, bool $includeFutureAutosend = false)
@@ -220,7 +220,10 @@ class NewsletterManager
         $query = 'SELECT archive_id, send_startdate FROM '. rex::getTablePrefix() .'375_sendlist ';
         if ($manual_send_only) {
             $query .= 'WHERE autosend = 0 ';
-        } elseif (!$includeFutureAutosend) {
+        } elseif ($includeFutureAutosend) {
+            // only background (autosend) archives, including those scheduled for the future
+            $query .= 'WHERE autosend = 1 ';
+        } else {
             $query .= 'WHERE (autosend = 0 OR (autosend = 1 AND (send_startdate IS NULL OR send_startdate <= NOW()))) ';
         }
         $query .= 'GROUP BY archive_id';
