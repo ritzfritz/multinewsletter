@@ -490,6 +490,9 @@ class Newsletter
         $query = 'UPDATE '. rex::getTablePrefix() .'375_sendlist SET autosend = 1';
         if (null !== $send_startdate) {
             $query .= ", send_startdate = '". $send_startdate->format('Y-m-d H:i:s') ."'";
+        } else {
+            // Reset any previously scheduled start date so sending starts immediately.
+            $query .= ', send_startdate = NULL';
         }
         $query .= ' WHERE archive_id = '. $this->id;
         $result = rex_sql::factory();
