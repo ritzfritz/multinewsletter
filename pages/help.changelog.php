@@ -2,7 +2,7 @@
 	<legend>MultiNewsletter Changelog</legend>
 	<p>3.8.4</p>
 	<ul>
-		<li>...</li>
+		<li>Wartung: Interne CI-Dateien im Verzeichnis <code>.github</code> (GitHub Actions, Dependabot) werden nicht mehr mit dem Installer-Paket ausgeliefert.</li>
 	</ul>
 	<p>3.8.3</p>
 	<ul>
