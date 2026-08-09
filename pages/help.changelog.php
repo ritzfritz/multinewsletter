@@ -1,6 +1,6 @@
 <fieldset>
 	<legend>MultiNewsletter Changelog</legend>
-	<p>3.8.4-DEV</p>
+	<p>3.8.4</p>
 	<ul>
 		<li>...</li>
 	</ul>
